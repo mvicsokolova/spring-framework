@@ -24,9 +24,8 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Optional;
 
-import kotlin.reflect.KProperty;
-import kotlin.reflect.jvm.ReflectJvmMapping;
-
+import kotlinx.reflect.lite.*;
+import kotlinx.reflect.lite.impl.*;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.InjectionPoint;

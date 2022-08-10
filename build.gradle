@@ -252,6 +252,7 @@ configure(allprojects) { project ->
 			cacheChangingModulesFor 0, "seconds"
 		}
 		repositories {
+			mavenLocal()
 			mavenCentral()
 			maven { url "https://repo.spring.io/libs-spring-framework-build" }
 			maven { url "https://repo.spring.io/milestone" } // temporarily for context-propagation via Reactor Netty
@@ -270,7 +271,7 @@ configure([rootProject] + javaProjects) { project ->
 
 	apply plugin: "java"
 	apply plugin: "java-test-fixtures"
-	apply plugin: "checkstyle"
+	//apply plugin: "checkstyle"
 	apply plugin: 'org.springframework.build.compile'
 	apply from: "${rootDir}/gradle/toolchains.gradle"
 	apply from: "${rootDir}/gradle/ide.gradle"
@@ -283,7 +284,7 @@ configure([rootProject] + javaProjects) { project ->
 			kotlinOptions {
 				languageVersion = "1.7"
 				apiVersion = "1.7"
-				freeCompilerArgs = ["-Xjsr305=strict", "-Xsuppress-version-warnings", "-opt-in=kotlin.RequiresOptIn"]
+				freeCompilerArgs = ["-Xjsr305=strict", "-Xsuppress-version-warnings", "-opt-in=kotlin.RequiresOptIn", "-no-reflect"]
 				allWarningsAsErrors = true
 			}
 		}
@@ -302,10 +303,10 @@ configure([rootProject] + javaProjects) { project ->
 		systemProperty("io.netty.leakDetection.level", "paranoid")
 	}
 
-	checkstyle {
-		toolVersion = "10.3.1"
-		configDirectory.set(rootProject.file("src/checkstyle"))
-	}
+//	checkstyle {
+//		toolVersion = "10.3.1"
+//		configDirectory.set(rootProject.file("src/checkstyle"))
+//	}
 
 	dependencies {
 		testImplementation("org.junit.jupiter:junit-jupiter-api")
@@ -325,7 +326,7 @@ configure([rootProject] + javaProjects) { project ->
 		// JSR-305 only used for non-required meta-annotations
 		compileOnly("com.google.code.findbugs:jsr305")
 		testCompileOnly("com.google.code.findbugs:jsr305")
-		checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.31")
+		//checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.31")
 	}
 
 	ext.javadocLinks = [

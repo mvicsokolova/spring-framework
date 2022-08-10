@@ -21,10 +21,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import kotlin.reflect.KFunction;
-import kotlin.reflect.KParameter;
-import kotlin.reflect.jvm.ReflectJvmMapping;
-
+import kotlinx.reflect.lite.*;
+import kotlinx.reflect.lite.impl.*;
 import org.springframework.lang.Nullable;
 
 /**

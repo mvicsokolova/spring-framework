@@ -29,11 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
+import kotlinx.reflect.lite.*;
+import kotlinx.reflect.lite.impl.*;
 
 import kotlin.Unit;
-import kotlin.reflect.KFunction;
-import kotlin.reflect.KParameter;
-import kotlin.reflect.jvm.ReflectJvmMapping;
 
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;

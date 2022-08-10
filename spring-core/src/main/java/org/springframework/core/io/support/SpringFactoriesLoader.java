@@ -33,12 +33,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import kotlin.jvm.JvmClassMappingKt;
-import kotlin.reflect.KFunction;
-import kotlin.reflect.KParameter;
-import kotlin.reflect.full.KClasses;
-import kotlin.reflect.jvm.KCallablesJvm;
-import kotlin.reflect.jvm.ReflectJvmMapping;
+import kotlinx.reflect.lite.*;
+import kotlinx.reflect.lite.impl.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -450,7 +446,7 @@ public class SpringFactoriesLoader {
 		@Nullable
 		static <T> Constructor<T> findPrimaryConstructor(Class<T> clazz) {
 			try {
-				KFunction<T> primaryConstructor = KClasses.getPrimaryConstructor(JvmClassMappingKt.getKotlinClass(clazz));
+				KFunction<T> primaryConstructor = KClasses.getPrimaryConstructor(JvmClassMappingKt.getLiteKClass(clazz));
 				if (primaryConstructor != null) {
 					Constructor<T> constructor = ReflectJvmMapping.getJavaConstructor(
 							primaryConstructor);
