@@ -20,6 +20,8 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
+import kotlinx.reflect.lite.*
+import kotlinx.reflect.lite.impl.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.core.ParameterizedTypeReference
@@ -65,7 +67,7 @@ class ServerRequestExtensionsTests {
 
 	@Test
 	fun `bodyToFlow with KClass parameters`() {
-		request.bodyToFlow(String::class)
+		request.bodyToFlow(String::class.java.kotlin)
 		verify { request.bodyToFlux(String::class.java) }
 	}
 
@@ -81,7 +83,7 @@ class ServerRequestExtensionsTests {
 	fun `awaitBody with KClass parameters`() {
 		every { request.bodyToMono(String::class.java) } returns Mono.just("foo")
 		runBlocking {
-			assertThat(request.awaitBody(String::class)).isEqualTo("foo")
+			assertThat(request.awaitBody(String::class.java.kotlin)).isEqualTo("foo")
 		}
 	}
 
@@ -97,7 +99,7 @@ class ServerRequestExtensionsTests {
 	fun `awaitBodyOrNull with KClass parameters`() {
 		every { request.bodyToMono(String::class.java) } returns Mono.empty()
 		runBlocking {
-			assertThat(request.awaitBodyOrNull(String::class)).isNull()
+			assertThat(request.awaitBodyOrNull(String::class.java.kotlin)).isNull()
 		}
 	}
 

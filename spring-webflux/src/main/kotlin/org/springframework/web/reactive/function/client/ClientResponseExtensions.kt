@@ -24,7 +24,8 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.ResponseEntity
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import kotlin.reflect.KClass
+import kotlinx.reflect.lite.KClass
+import kotlinx.reflect.lite.impl.*
 
 /**
  * Extension for [ClientResponse.bodyToMono] providing a `bodyToMono<Foo>()` variant
