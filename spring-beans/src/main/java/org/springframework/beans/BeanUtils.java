@@ -34,13 +34,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import kotlin.jvm.JvmClassMappingKt;
-import kotlin.reflect.KFunction;
-import kotlin.reflect.KParameter;
-import kotlin.reflect.full.KClasses;
-import kotlin.reflect.jvm.KCallablesJvm;
-import kotlin.reflect.jvm.ReflectJvmMapping;
-
 import org.springframework.core.DefaultParameterNameDiscoverer;
 import org.springframework.core.KotlinDetector;
 import org.springframework.core.MethodParameter;
@@ -53,6 +46,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ConcurrentReferenceHashMap;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
+
+import kotlinx.reflect.lite.*;
+import kotlinx.reflect.lite.impl.*;
 
 /**
  * Static convenience methods for JavaBeans: for instantiating beans,
@@ -841,7 +837,7 @@ public abstract class BeanUtils {
 		@Nullable
 		public static <T> Constructor<T> findPrimaryConstructor(Class<T> clazz) {
 			try {
-				KFunction<T> primaryCtor = KClasses.getPrimaryConstructor(JvmClassMappingKt.getKotlinClass(clazz));
+				KFunction<T> primaryCtor = KClasses.getPrimaryConstructor(JvmClassMappingKt.getLiteKClass(clazz));
 				if (primaryCtor == null) {
 					return null;
 				}
