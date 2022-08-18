@@ -7,7 +7,7 @@ dependencies {
 	optional("jakarta.inject:jakarta.inject-api")
 	optional("org.yaml:snakeyaml")
 	optional("org.apache.groovy:groovy-xml")
-	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.2-spring")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.1-SNAPSHOT")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	testImplementation(testFixtures(project(":spring-core")))
 	testImplementation(project(":spring-core-test"))

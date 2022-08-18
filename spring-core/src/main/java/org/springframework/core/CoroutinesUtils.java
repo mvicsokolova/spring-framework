@@ -21,7 +21,6 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 
 import kotlin.Unit;
-import kotlin.jvm.JvmClassMappingKt;
 import kotlinx.coroutines.BuildersKt;
 import kotlinx.coroutines.CoroutineStart;
 import kotlinx.coroutines.Deferred;
@@ -35,6 +34,7 @@ import kotlinx.reflect.lite.impl.*;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import static kotlinx.reflect.lite.impl.KCallablesJvm.isAccessible;
 
 /**
  * Utilities for working with Kotlin Coroutines.
@@ -69,7 +69,7 @@ public abstract class CoroutinesUtils {
 	@SuppressWarnings("deprecation")
 	public static Publisher<?> invokeSuspendingFunction(Method method, Object target, Object... args) {
 		KFunction<?> function = Objects.requireNonNull(ReflectJvmMapping.getKotlinFunction(method));
-		if (method.isAccessible() && !KCallablesJvm.isAccessible(function)) {
+		if (method.isAccessible() && !isAccessible(function)) {
 			KCallablesJvm.setAccessible(function, true);
 		}
 		Mono<Object> mono = MonoKt.mono(Dispatchers.getUnconfined(), (scope, continuation) ->
@@ -79,10 +79,10 @@ public abstract class CoroutinesUtils {
 
 		KClassifier returnType = function.getReturnType().getClassifier();
 		if (returnType != null) {
-			if (returnType.equals(JvmClassMappingKt.getKotlinClass(Flow.class))) {
+			if (returnType.equals(JvmClassMappingKt.getLiteKClass(Flow.class))) {
 				return mono.flatMapMany(CoroutinesUtils::asFlux);
 			}
-			else if (returnType.equals(JvmClassMappingKt.getKotlinClass(Mono.class))) {
+			else if (returnType.equals(JvmClassMappingKt.getLiteKClass(Mono.class))) {
 				return mono.flatMap(o -> ((Mono<?>)o));
 			}
 			else if (returnType instanceof KClass<?> kClass &&

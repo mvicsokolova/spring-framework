@@ -23,7 +23,7 @@ dependencies {
 	optional("org.eclipse.jetty.websocket:websocket-jetty-client")
 	optional("io.undertow:undertow-websockets-jsr-jakarta")
 	optional("org.apache.httpcomponents:httpclient")
-	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.2-spring")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.1-SNAPSHOT")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("com.google.protobuf:protobuf-java-util")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
