@@ -7,9 +7,11 @@ dependencies {
 	optional("jakarta.inject:jakarta.inject-api")
 	optional("org.yaml:snakeyaml")
 	optional("org.apache.groovy:groovy-xml")
-	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.1-SNAPSHOT")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.0-SNAPSHOT-dev")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	testImplementation(testFixtures(project(":spring-core")))
+	// kotlin-reflect dependency for the test usage of KClass<T>.createInstance() API unsupported in kotlinx.reflect.lite
+	testImplementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation(project(":spring-core-test"))
 	testImplementation("jakarta.annotation:jakarta.annotation-api")
 	testFixturesApi("org.junit.jupiter:junit-jupiter-api")
