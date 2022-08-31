@@ -47,7 +47,7 @@ dependencies {
 	optional("com.googlecode.protobuf-java-format:protobuf-java-format")
 	optional("com.rometools:rome")
 	optional("org.apache.groovy:groovy")
-	optional("org.jetbrains.kotlin:kotlin-reflect")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.0-SNAPSHOT-dev")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("org.jetbrains.kotlinx:kotlinx-serialization-json")
 	testImplementation(testFixtures(project(":spring-beans")))
@@ -62,6 +62,7 @@ dependencies {
 	testImplementation("org.eclipse.jetty:jetty-server")
 	testImplementation("org.eclipse.jetty:jetty-servlet")
 	testImplementation("com.squareup.okhttp3:mockwebserver")
+	// kotlin-reflect dependency for the test usage of KClassifier.createType API unsupported in kotlinx.reflect.lite
 	testImplementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.skyscreamer:jsonassert")
 	testImplementation("org.xmlunit:xmlunit-assertj")
