@@ -22,7 +22,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import kotlinx.reflect.lite.*;
-import kotlinx.reflect.lite.impl.*;
+import kotlinx.reflect.lite.full.*;
+import kotlinx.reflect.lite.jvm.*;
 import org.springframework.lang.Nullable;
 
 /**

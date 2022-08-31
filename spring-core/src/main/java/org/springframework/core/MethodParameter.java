@@ -18,19 +18,13 @@ package org.springframework.core;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Executable;
-import java.lang.reflect.Member;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 import kotlinx.reflect.lite.*;
-import kotlinx.reflect.lite.impl.*;
+import kotlinx.reflect.lite.jvm.*;
 
 import kotlin.Unit;
 
@@ -401,7 +395,7 @@ public class MethodParameter {
 	 */
 	public boolean isOptional() {
 		return (getParameterType() == Optional.class || hasNullableAnnotation() ||
-				(KotlinDetector.isKotlinReflectPresent() &&
+				(KotlinDetector.isKotlinReflectLitePresent() &&
 						KotlinDetector.isKotlinType(getContainingClass()) &&
 						KotlinDelegate.isOptional(this)));
 	}
@@ -505,7 +499,7 @@ public class MethodParameter {
 			if (this.parameterIndex < 0) {
 				Method method = getMethod();
 				paramType = (method != null ?
-						(KotlinDetector.isKotlinReflectPresent() && KotlinDetector.isKotlinType(getContainingClass()) ?
+						(KotlinDetector.isKotlinReflectLitePresent() && KotlinDetector.isKotlinType(getContainingClass()) ?
 						KotlinDelegate.getGenericReturnType(method) : method.getGenericReturnType()) : void.class);
 			}
 			else {
@@ -533,7 +527,7 @@ public class MethodParameter {
 			if (method == null) {
 				return void.class;
 			}
-			if (KotlinDetector.isKotlinReflectPresent() && KotlinDetector.isKotlinType(getContainingClass())) {
+			if (KotlinDetector.isKotlinReflectLitePresent() && KotlinDetector.isKotlinType(getContainingClass())) {
 				return KotlinDelegate.getReturnType(method);
 			}
 			return method.getReturnType();

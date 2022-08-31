@@ -31,7 +31,8 @@ import reactor.core.publisher.Mono
 import java.net.InetSocketAddress
 import java.security.Principal
 import kotlinx.reflect.lite.KClass
-import kotlinx.reflect.lite.impl.*
+import kotlinx.reflect.lite.full.*
+import kotlinx.reflect.lite.jvm.*
 
 /**
  * Extension for [ServerRequest.bodyToMono] providing a `bodyToMono<Foo>()` variant

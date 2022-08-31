@@ -22,7 +22,7 @@ import java.lang.reflect.Method
 import java.lang.reflect.TypeVariable
 import kotlin.coroutines.Continuation
 import kotlinx.reflect.lite.*
-import kotlinx.reflect.lite.impl.*
+import kotlinx.reflect.lite.jvm.*
 
 /**
  * Tests for Kotlin support in [MethodParameter].

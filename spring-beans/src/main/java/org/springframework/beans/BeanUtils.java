@@ -48,7 +48,8 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
 import kotlinx.reflect.lite.*;
-import kotlinx.reflect.lite.impl.*;
+import kotlinx.reflect.lite.full.*;
+import kotlinx.reflect.lite.jvm.*;
 
 /**
  * Static convenience methods for JavaBeans: for instantiating beans,
@@ -183,7 +184,7 @@ public abstract class BeanUtils {
 		Assert.notNull(ctor, "Constructor must not be null");
 		try {
 			ReflectionUtils.makeAccessible(ctor);
-			if (KotlinDetector.isKotlinReflectPresent() && KotlinDetector.isKotlinType(ctor.getDeclaringClass())) {
+			if (KotlinDetector.isKotlinReflectLitePresent() && KotlinDetector.isKotlinType(ctor.getDeclaringClass())) {
 				return KotlinDelegate.instantiateClass(ctor, args);
 			}
 			else {
@@ -270,7 +271,7 @@ public abstract class BeanUtils {
 	@Nullable
 	public static <T> Constructor<T> findPrimaryConstructor(Class<T> clazz) {
 		Assert.notNull(clazz, "Class must not be null");
-		if (KotlinDetector.isKotlinReflectPresent() && KotlinDetector.isKotlinType(clazz)) {
+		if (KotlinDetector.isKotlinReflectLitePresent() && KotlinDetector.isKotlinType(clazz)) {
 			return KotlinDelegate.findPrimaryConstructor(clazz);
 		}
 		return null;

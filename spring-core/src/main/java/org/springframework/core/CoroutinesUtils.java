@@ -29,12 +29,14 @@ import kotlinx.coroutines.GlobalScope;
 import kotlinx.coroutines.flow.Flow;
 import kotlinx.coroutines.reactor.MonoKt;
 import kotlinx.coroutines.reactor.ReactorFlowKt;
-import kotlinx.reflect.lite.*;
-import kotlinx.reflect.lite.impl.*;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import static kotlinx.reflect.lite.impl.KCallablesJvm.isAccessible;
+
+import kotlinx.reflect.lite.*;
+import kotlinx.reflect.lite.full.*;
+import static kotlinx.reflect.lite.full.KCallablesJvm.isAccessible;
+import kotlinx.reflect.lite.jvm.*;
 
 /**
  * Utilities for working with Kotlin Coroutines.

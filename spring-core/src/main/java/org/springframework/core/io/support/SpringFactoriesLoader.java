@@ -34,7 +34,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import kotlinx.reflect.lite.*;
-import kotlinx.reflect.lite.impl.*;
+import kotlinx.reflect.lite.full.*;
+import kotlinx.reflect.lite.jvm.*;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -416,7 +418,7 @@ public class SpringFactoriesLoader {
 		}
 
 		private static boolean isKotlinType(Class<?> factoryImplementationClass) {
-			return KotlinDetector.isKotlinReflectPresent() && KotlinDetector.isKotlinType(factoryImplementationClass);
+			return KotlinDetector.isKotlinReflectLitePresent() && KotlinDetector.isKotlinType(factoryImplementationClass);
 		}
 
 		@Nullable

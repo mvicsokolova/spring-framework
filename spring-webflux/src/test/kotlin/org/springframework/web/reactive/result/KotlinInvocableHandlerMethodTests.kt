@@ -35,7 +35,7 @@ import reactor.core.publisher.Mono
 import reactor.test.StepVerifier
 import java.lang.reflect.Method
 import kotlinx.reflect.lite.*
-import kotlinx.reflect.lite.impl.*
+import kotlinx.reflect.lite.jvm.*
 
 class KotlinInvocableHandlerMethodTests {
 

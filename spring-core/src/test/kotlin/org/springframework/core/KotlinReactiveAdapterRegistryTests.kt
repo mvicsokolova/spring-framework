@@ -32,7 +32,7 @@ import reactor.core.publisher.Mono
 import reactor.test.StepVerifier
 import java.time.Duration
 import kotlinx.reflect.lite.*
-import kotlinx.reflect.lite.impl.*
+import kotlinx.reflect.lite.jvm.*
 
 @OptIn(DelicateCoroutinesApi::class)
 class KotlinReactiveAdapterRegistryTests {

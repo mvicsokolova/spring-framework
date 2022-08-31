@@ -25,7 +25,8 @@ import org.springframework.http.ResponseEntity
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import kotlinx.reflect.lite.KClass
-import kotlinx.reflect.lite.impl.*
+import kotlinx.reflect.lite.full.*
+import kotlinx.reflect.lite.jvm.*
 
 /**
  * Extension for [ClientResponse.bodyToMono] providing a `bodyToMono<Foo>()` variant

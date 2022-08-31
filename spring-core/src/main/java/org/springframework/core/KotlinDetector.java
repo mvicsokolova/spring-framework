@@ -38,7 +38,7 @@ public abstract class KotlinDetector {
 	// For ConstantFieldFeature compliance, otherwise could be deduced from kotlinMetadata
 	private static final boolean kotlinPresent;
 
-	private static final boolean kotlinReflectPresent;
+	private static final boolean kotlinReflectLitePresent;
 
 	static {
 		Class<?> metadata;
@@ -52,7 +52,7 @@ public abstract class KotlinDetector {
 		}
 		kotlinMetadata = (Class<? extends Annotation>) metadata;
 		kotlinPresent = (kotlinMetadata != null);
-		kotlinReflectPresent = ClassUtils.isPresent("kotlin.reflect.full.KClasses", classLoader);
+		kotlinReflectLitePresent = ClassUtils.isPresent("kotlinx.reflect.lite.full.KCallables", classLoader);
 	}
 
 
@@ -67,8 +67,8 @@ public abstract class KotlinDetector {
 	 * Determine whether Kotlin reflection is present.
 	 * @since 5.1
 	 */
-	public static boolean isKotlinReflectPresent() {
-		return kotlinReflectPresent;
+	public static boolean isKotlinReflectLitePresent() {
+		return kotlinReflectLitePresent;
 	}
 
 	/**
