@@ -94,7 +94,7 @@ dependencies {
 	compileOnly("io.projectreactor.tools:blockhound")
 	optional("net.sf.jopt-simple:jopt-simple")
 	optional("org.aspectj:aspectjweaver")
-	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.1-SNAPSHOT")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.0-SNAPSHOT-dev")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
