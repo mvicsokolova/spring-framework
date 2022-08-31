@@ -27,7 +27,7 @@ dependencies {
 	optional("com.fasterxml.jackson.dataformat:jackson-dataformat-smile")
 	optional("com.fasterxml.jackson.dataformat:jackson-dataformat-cbor")
 	optional("org.apache.groovy:groovy-templates")
-	optional("org.jetbrains.kotlin:kotlin-reflect")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.0-SNAPSHOT-dev")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("org.reactivestreams:reactive-streams")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
