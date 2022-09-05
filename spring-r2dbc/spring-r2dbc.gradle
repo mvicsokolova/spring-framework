@@ -8,7 +8,7 @@ dependencies {
 	api(project(":spring-tx"))
 	api("io.r2dbc:r2dbc-spi")
 	api("io.projectreactor:reactor-core")
-	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:0.1.0-SNAPSHOT-dev")
+	optional("org.jetbrains.kotlinx:kotlinx.reflect.lite:$kotlinx_reflect_lite_version")
 	optional("org.jetbrains.kotlin:kotlin-stdlib")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 	optional("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
